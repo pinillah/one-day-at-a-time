@@ -1,0 +1,95 @@
+/* Basic CSS Page Styling */
+body {
+    /* Adding Custom Font*/
+    font-family: 'PPHatton-Ultralight';
+    src: url('fonts/PPHatton-Ultralight.otf') format('otf');
+    /* Adds custom background */
+    background-image: url('img/Capstone-bg-BG-long.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Other styling */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-family: 'PPHatton-Ultralight';
+    font-weight: 100;
+    color: white;
+}
+
+h2 {
+    font-family: 'PPHatton-UltralightItalic';
+    font-weight: 100;
+    margin-top: -40px;
+    font-size: 2rem;
+    color: white;
+}
+
+.main {
+    /* h1 & h2 alignment */
+    text-align: center;
+}
+
+/* Form Styling */
+.form {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+
+.form input[type="submit"] {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.10);
+    color: white;
+    text-align: center;
+}
+
+.form select {
+    font-family: initial;
+    font-family: 'PPHatton-Ultralight';
+    /* Adds font family again since font reset was needed for styles to apply*/
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 180px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.10);
+    color: white;
+    text-align: center;
+}
+
+/* Placeholder text style */
+.form input::placeholder,
+.form select::placeholder {
+    font-family: 'PPHatton-Ultralight';
+    color: white;
+    text-align: center;
+}
+
+
+/* Apply custom font to "Done" button */
+.form input[type="submit"] {
+    font-family: 'PPHatton-Ultralight';
+    display: block;
+    margin: 10px auto;
+    /* Centers the "Done" button horizontally */
+    padding: 5px 20px;
+    max-width: 90px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.20);
+    color: white;
+    text-align: center;
+}
