@@ -11,20 +11,21 @@
 
 <body>
     <div class="main">
-        <h1>explore the universe</h1>
-        <h2>one day at a time</h2>
+        <div class="heading">
+            <h1>explore the universe</h1>
+            <h2>one day at a time</h2>
+        </div>
         <div class="form">
-            <form>
+            <form id="form">
                 <div class="year">
                     <select id="year" name="year">
-                        <option value="0">Year</option>
+                        <option value="0">year</option>
                     </select>
                 </div>
 
-
-                <div class="day">
+                <div class="month">
                     <select id="month" name="month">
-                        <option value="0">Month</option>
+                        <option value="0">month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -37,12 +38,14 @@
                         <option value="12">December</option>
                     </select>
                 </div>
-                <div class="month">
+                <div class="day">
                     <select id="day" name="day">
-                        <option value="0">Day</option>
+                        <option value="0">day</option>
                     </select>
-                    <input type="submit" value="done">
                 </div>
+                <!-- Button commented out so the mockup is functional -->
+                <!-- <input type="button" value="Submit"> -->
+                <a class="button" href="/content.html"> send</a>
             </form>
         </div>
     </div>

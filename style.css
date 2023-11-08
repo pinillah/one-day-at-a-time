@@ -1,21 +1,29 @@
-/* Basic CSS Page Styling */
+/* Global CSS Page Styling */
+
+/* adds font src */
+@font-face {
+    font-family: 'PPHatton-Ultralight';
+    src: url('fonts/PPHatton-Ultralight.otf') format('opentype');
+}
+
+
 body {
     /* Adding Custom Font*/
     font-family: 'PPHatton-Ultralight';
-    src: url('fonts/PPHatton-Ultralight.otf') format('otf');
     /* Adds custom background */
     background-image: url('img/Capstone-bg-BG-long.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Other styling */
-    margin: 0;
     padding: 0;
-    display: flex;
+    margin: 0;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 100vw;
 }
+
 
 h1 {
     font-family: 'PPHatton-Ultralight';
@@ -26,33 +34,52 @@ h1 {
 h2 {
     font-family: 'PPHatton-UltralightItalic';
     font-weight: 100;
-    margin-top: -40px;
     font-size: 2rem;
     color: white;
 }
 
+.heading {
+    line-height: 0.2rem;
+}
+
 .main {
-    /* h1 & h2 alignment */
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 /* Form Styling */
 .form {
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: white;
+
 }
 
+/* form submit input button styling commented out since html was also commented out */
 
-.form input[type="submit"] {
-    display: block;
+/* .form input[type="submit"] {
     margin: 10px 0;
     padding: 10px;
     width: 250px;
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.10);
+    color: white;
+    text-align: center;
+} */
+
+.form input[type="button"],
+.button {
+    display: block;
+    font-family: 'PPHatton-Ultralight';
+    margin: 10px auto;
+    text-decoration: none;
+    padding: 5px 20px;
+    max-width: 90px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.20);
     color: white;
     text-align: center;
 }
@@ -61,7 +88,6 @@ h2 {
     font-family: initial;
     font-family: 'PPHatton-Ultralight';
     /* Adds font family again since font reset was needed for styles to apply*/
-    display: block;
     margin: 10px 0;
     padding: 10px;
     width: 180px;
@@ -79,17 +105,273 @@ h2 {
     text-align: center;
 }
 
+/**** content.html styling ****/
+.image img {
+    width: 300px;
+}
 
-/* Apply custom font to "Done" button */
-.form input[type="submit"] {
-    font-family: 'PPHatton-Ultralight';
-    display: block;
-    margin: 10px auto;
-    /* Centers the "Done" button horizontally */
-    padding: 5px 20px;
-    max-width: 90px;
-    border: 1px solid white;
-    background-color: rgba(255, 255, 255, 0.20);
+.imgData p {
     color: white;
+    line-height: 2rem;
+}
+
+.addFavouriteIcon img {
+    height: 25px;
+}
+
+/* styling for footer icons */
+footer {
+    padding-bottom: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
+}
+
+.footerIcons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 85%;
+}
+
+.footerIcons img {
+    height: 20px;
+    /* Preventing icon image stretch */
+    object-fit: contain;
+}
+
+/**** zoom.html styling ****/
+.imageZoom img {
+    width: 800px;
+}
+
+.closeIcon img {
+    width: 20px;
+}
+
+/**** favourites.html styling ****/
+.imgGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    align-content: start;
+}
+
+.imgGrid img {
+    width: 100%;
+    max-height: 120px;
+}
+
+.footerHomeIcon {
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+.footerHomeIcon img {
+    height: 20px;
+    /* Preventing icon image stretch */
+    object-fit: contain;
+}
+
+/****************** MEDIA QUERY FOR TABLET ******************/
+/****************** MEDIA QUERY FOR TABLET ******************/
+/****************** MEDIA QUERY FOR TABLET ******************/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    /**** index.html styling ****/
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .form select {
+        width: 90px;
+        margin: 0 10px;
+    }
+
+    form,
+    .form input[type="button"],
+    .button {
+        display: flex;
+        align-items: center;
+    }
+
+    /**** content.html styling ****/
+    .mainContainer {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+    }
+
+    /* modifying layout to grid as per mockup */
+    .addFavouriteIcon {
+        grid-row: 1 / 2;
+        grid-column: 2 / 2;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .imgData {
+        grid-row: 2 / 2;
+        font-size: 1.2rem;
+    }
+
+    .addFavouriteIcon img {
+        width: auto;
+        height: auto;
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .image img {
+        width: 500px;
+    }
+
+    .footerIcons {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 85%;
+    }
+
+    .footerIcons img {
+        height: 20px;
+    }
+
+    /**** zoom.html styling ****/
+
+    .imageZoom img {
+        width: 800px;
+    }
+
+    .closeIcon img {
+        width: 20px;
+    }
+
+    /**** favourite.html styling ****/
+    .imgGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        margin-bottom: 15px;
+        min-width: 500px;
+    }
+
+    .imgGrid img {
+        width: 100%;
+        max-height: 160px;
+    }
+
+    .footerHomeIcon img {
+        height: 25px;
+    }
+}
+
+/****************** MEDIA QUERY FOR WEB ******************/
+/****************** MEDIA QUERY FOR WEB ******************/
+/****************** MEDIA QUERY FOR WEB ******************/
+@media screen and (min-width: 1024px) {
+
+    /**** index.html styling ****/
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    .form select {
+        font-size: 1.5rem;
+        width: 140px;
+        margin: 0 10px;
+    }
+
+    form,
+    .form input[type="button"],
+    .button {
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+    }
+
+    /**** content.html styling ****/
+    .mainContainer {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+    }
+
+    /* modifying layout to grid as per mockup */
+    .addFavouriteIcon {
+        grid-row: 1;
+        grid-column: 3;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .image {
+        grid-row: 1;
+        grid-column: 2;
+    }
+
+    .imgData {
+        grid-row: 1;
+        grid-column: 1;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        margin-right: 50px;
+    }
+
+    .imgData p {
+        font-size: 1.3rem;
+    }
+
+    .image img {
+        width: 500px;
+    }
+
+    /**** zoom.html styling ****/
+    .imageZoom img {
+        width: 1000px;
+    }
+
+    .closeIcon img {
+        width: 20px;
+    }
+
+
+    /**** favourite.html styling ****/
+    .imgGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        margin-bottom: 15px;
+        gap: 20px;
+    }
+
+    .imgGrid img {
+        width: 100%;
+        max-height: 300px;
+    }
+
+    .bottomTitle {
+        font-size: 3rem;
+    }
+
+    .footerHomeIcon img {
+        height: 25px;
+    }
+
+
 }
