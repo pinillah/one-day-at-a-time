@@ -69,6 +69,8 @@ datePopulation()
 const imgArray = [];
 const $submit = document.getElementById('submit')
 
+
+
 async function displayImage() {
     let year = document.getElementById("year").value
     let month = document.getElementById("month").value
@@ -83,7 +85,44 @@ async function displayImage() {
     imgArray.push(nasaInfo)
 }
 
+async function getSingleImg(date){
+    
+    let image = await fetch("https://api.nasa.gov/planetary/apod?api_key=9qRDIqRDhE5PhZRJR5gdiv6jsyzqS9cAClWMlCHu&date=" + date)
+    let info = await image.json()
 
+    nasaContent.innerHTML = `
+    <div class="mainContainer">
+    <div class="image" id="image">
+        <a>
+            <img class="img" data-url="${info.url}" src="${info.url}" alt="" data-date="${info.date}">
+        </a>
+    </div>
+
+    <div class="imgData" id="imgData">
+            <h4 class="title">${info.title}</h4> <h5>"${info.date}"</h5>
+        <div class="description">
+            <p>"${info.explanation}"</p>
+        </div>
+    </div>
+
+    <div class="addFavouriteIcon save" id="saveIcon">
+    <button class="remove" data-date="${info.date}">Remove</button>
+    </div> 
+
+    `
+
+    footer.innerHTML = `
+    <div class="footerIcons">
+            <a class="home" href="/">
+                <img src="/img/home_icon.png" alt="home icon" class="homeIcon">
+            </a>
+            <a class="added">
+                <img src="/img/favourite_icon.png" alt="favourite star icon" class="added">
+            </a>
+        </div>
+    `
+   
+}
 
 // function to fetch and store data in array from apod
 function submitClick() {
@@ -115,36 +154,34 @@ const main = document.getElementById('main')
 const imgGrid = document.getElementById('imgGrid')
 
 
+
 let savedArray = []
 
 
 
 // function to display content from Nasa and remove form, add footer icons
 function getNasaContent() {
-    let url = imgArray[0].url
-    let title = imgArray[0].title
-    let dateInfo = imgArray[0].date
-    let description = imgArray[0].explanation
+    let nasaInfo = imgArray[0]
 
     nasaContent.innerHTML = `
     <div class="mainContainer">
     <div class="image" id="image">
         <a>
-            <img class="img" src="${url}" alt="">
+            <img class="img" src="${nasaInfo.url}" alt="" data-date="${nasaInfo.date}" >
         </a>
     </div>
 
     <div class="imgData" id="imgData">
-            <h4 class="title">“${title}”</h4> <h5>${dateInfo}</h5>
+            <h4 class="title">“${nasaInfo.title}”</h4> <h5>${nasaInfo.date}</h5>
         <div class="description">
-            <p>${description}</p>
+            <p>${nasaInfo.explanation}</p>
         </div>
     </div>
 
     <div class="addFavouriteIcon save" id="saveIcon">
         <img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save">
     </div>
-    <button class="remove">Remove</button>
+    <button class="remove" data-date="${nasaInfo.date}">Remove</button>
     `
 
     footer.innerHTML = `
@@ -179,7 +216,6 @@ main.addEventListener('click', function (e) {
         getHdurlContent()
 
     } else if (e.target.classList.contains('added')) {
-        console.log('nrnj')
         $form.innerHTML = ``
         getFavorites()
         buildFavorites()
@@ -202,18 +238,24 @@ main.addEventListener('click', function (e) {
             })
             localStorage.setItem('savedArray', JSON.stringify(savedArray));
             getFavorites()
+  
         }
+        const saveIcon = document.getElementById('saveIcon')
+        saveIcon.innerHTML = ` ` 
 
     } else if (e.target.classList.contains('remove')) {
-        let url = imgArray[0].url
-        let index = savedArray.findIndex(info => info.url === url)
+        let index = savedArray.findIndex(info => info.date === e.target.dataset.date)
         console.log(index)
         if (index >= 0) {
             savedArray.splice(index, 1)
             localStorage.setItem('savedArray', JSON.stringify(savedArray))
             getFavorites()
         }
+
+   
     } else if (e.target.closest('.thumbnail')) {
+        imgGrid.innerHTML = ``
+        collectionTitle.innerHTML = ``
         getSingleImg(e.target.closest('.thumbnail').dataset.date)
     }
 
@@ -225,43 +267,7 @@ main.addEventListener('click', function (e) {
 )
 submitClick()
 
-async function getSingleImg(date){
-    let image = await fetch("https://api.nasa.gov/planetary/apod?api_key=9qRDIqRDhE5PhZRJR5gdiv6jsyzqS9cAClWMlCHu&date=" + date)
-    let info = await image.json()
 
-    nasaContent.innerHTML = `
-    <div class="mainContainer">
-    <div class="image" id="image">
-        <a>
-            <img class="img" src="${info.url}" alt="">
-        </a>
-    </div>
-
-    <div class="imgData" id="imgData">
-            <h4 class="title">"${info.title}"</h4> <h5>"${info.date}"</h5>
-        <div class="description">
-            <p>"${info.explanation}"</p>
-        </div>
-    </div>
-
-    <div class="addFavouriteIcon save" id="saveIcon">
-        <img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save">
-    </div>
-    <button class="remove">Remove</button>
-    `
-
-    footer.innerHTML = `
-    <div class="footerIcons">
-            <a class="home" href="/">
-                <img src="/img/home_icon.png" alt="home icon" class="homeIcon">
-            </a>
-            <a class="added">
-                <img src="/img/favourite_icon.png" alt="favourite star icon" class="added">
-            </a>
-        </div>
-    `
-   
-}
 
 const collectionTitle = document.getElementById('collectionTitle')
 
@@ -285,8 +291,8 @@ function buildFavorites() {
     for (const info of savedArray) {
         html.push( /*html*/ `
             <div class= "fill">
-            <a data-date="${info.date}">
-                <img src="${info.url}" alt="${info.title}" class="thumbnail">
+            <a >
+                <img src="${info.url}" data-id="${info.date}" alt="${info.title}" class="thumbnail" data-date="${info.date}">
             </a>
             </div>
         `)
