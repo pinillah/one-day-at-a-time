@@ -105,7 +105,10 @@ async function getSingleImg(date){
         </div>
     </div>
 
-    <div class="addFavouriteIcon save" id="saveIcon">
+    <div id="saveIcon">
+    </div>
+
+    <div class="addFavouriteIcon save" id="removeButton">
     <button class="remove" data-date="${info.date}">Remove</button>
     </div> 
 
@@ -140,10 +143,7 @@ function submitClick() {
 
 submitClick()
 
-// const ls = localStorage.getItem('saved')
-// if (ls) {
-//     saved = JSON.parse(ls)
-// }
+
 
 // stores html content in variables for editing
 const nasaContent = document.getElementById('nasaContent')
@@ -181,7 +181,9 @@ function getNasaContent() {
     <div class="addFavouriteIcon save" id="saveIcon">
         <img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save">
     </div>
+    <div id="removeButton">
     <button class="remove" data-date="${nasaInfo.date}">Remove</button>
+    </div>
     `
 
     footer.innerHTML = `
@@ -196,7 +198,7 @@ function getNasaContent() {
     `
 }
 
-// hd image display, defined here so hdurl can be read
+// hd image display
 function getHdurlContent() {
     let hdurl = imgArray[0].hdurl
     hdurlContainer.innerHTML = `<div class="closeIcon"> <a id="closeIcon">
@@ -240,8 +242,9 @@ main.addEventListener('click', function (e) {
             getFavorites()
   
         }
-        const saveIcon = document.getElementById('saveIcon')
+        let saveIcon = document.getElementById('saveIcon')
         saveIcon.innerHTML = ` ` 
+    
 
     } else if (e.target.classList.contains('remove')) {
         let index = savedArray.findIndex(info => info.date === e.target.dataset.date)
@@ -251,7 +254,13 @@ main.addEventListener('click', function (e) {
             localStorage.setItem('savedArray', JSON.stringify(savedArray))
             getFavorites()
         }
+        let saveIcon = document.getElementById('saveIcon')
+        let removeButton = document.getElementById('removeButton')
 
+        saveIcon.innerHTML = `<img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save"> ` 
+
+        removeButton.innerHTML = ` `
+        
    
     } else if (e.target.closest('.thumbnail')) {
         imgGrid.innerHTML = ``
