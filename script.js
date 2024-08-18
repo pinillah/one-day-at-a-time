@@ -117,10 +117,10 @@ async function getSingleImg(date){
     footer.innerHTML = `
     <div class="footerIcons">
             <a class="home" href="/">
-                <img src="/img/home_icon.png" alt="home icon" class="homeIcon">
+                <img src="img/home_icon.png" alt="home icon" class="homeIcon">
             </a>
             <a class="added">
-                <img src="/img/favourite_icon.png" alt="favourite star icon" class="added">
+                <img src="img/favourite_icon.png" alt="favourite star icon" class="added">
             </a>
         </div>
     `
@@ -189,10 +189,10 @@ function getNasaContent() {
     footer.innerHTML = `
     <div class="footerIcons">
             <a class="home" href="/">
-                <img src="/img/home_icon.png" alt="home icon" class="homeIcon">
+                <img src="img/home_icon.png" alt="home icon" class="homeIcon">
             </a>
             <a class="added">
-                <img src="/img/favourite_icon.png" alt="favourite star icon" class="added">
+                <img src="img/favourite_icon.png" alt="favourite star icon" class="added">
             </a>
         </div>
     `
@@ -202,7 +202,7 @@ function getNasaContent() {
 function getHdurlContent() {
     let hdurl = imgArray[0].hdurl
     hdurlContainer.innerHTML = `<div class="closeIcon"> <a id="closeIcon">
-        <img src="/img/x_icon.png" alt="close icon" class="closeIcon"> </a> </div>
+        <img src="img/x_icon.png" alt="close icon" class="closeIcon"> </a> </div>
     <div class="imageZoom" id="image">
         <img src="${hdurl}" alt="full image">
     </div>`
@@ -257,7 +257,7 @@ main.addEventListener('click', function (e) {
         let saveIcon = document.getElementById('saveIcon')
         let removeButton = document.getElementById('removeButton')
 
-        saveIcon.innerHTML = `<img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save"> ` 
+        saveIcon.innerHTML = `<img src="img/add_favourite_icon.png" alt="add to favourites star icon" class="save"> ` 
 
         removeButton.innerHTML = ` `
         
