@@ -179,7 +179,7 @@ function getNasaContent() {
     </div>
 
     <div class="addFavouriteIcon save" id="saveIcon">
-        <img src="/img/add_favourite_icon.png" alt="add to favourites star icon" class="save">
+        <img src="img/add_favourite_icon.png" alt="add to favourites star icon" class="save">
     </div>
     <div id="removeButton">
     <button class="remove" data-date="${nasaInfo.date}">Remove</button>
@@ -289,7 +289,7 @@ function buildFavorites() {
     footer.innerHTML = `
     <div class="footerIcons">
             <a href="/" >
-                <img src="/img/home_icon.png" alt="home icon" class="homeIcon">
+                <img src="img/home_icon.png" alt="home icon" class="homeIcon">
             </a>
             <a>
         
