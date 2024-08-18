@@ -1,4 +1,4 @@
-# mtm6302-capstone-pinillah
+# Explore The Universe, One Day At A Time
 For this prototype I created 4 html files that have the content and workflow the user will be able to experience once javascript is added. 
 
 index.html
